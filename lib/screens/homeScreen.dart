@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:school_app/app/appConstants.dart';
 import 'package:school_app/app/size_extensions.dart';
+import 'package:school_app/theme/app_colours.dart';
 import 'package:school_app/widgets/CustomDrawer.dart';
 import 'package:school_app/widgets/customButton.dart';
 
@@ -45,7 +46,7 @@ class Homescreen extends StatelessWidget {
                   child: Container(
                     height: 200,
                     width: 120,
-                    color: Colors.orange[200],
+                    color: AppColors.primaryColor2,
                     child: SizedBox(),
                   ),
                 ),
@@ -61,7 +62,7 @@ class Homescreen extends StatelessWidget {
                       child: Container(
                         height: 90,
                         width: 120,
-                        color: Colors.red[200],
+                        color: AppColors.primaryColor,
                         child: SizedBox(),
                       ),
                     ),
@@ -75,7 +76,7 @@ class Homescreen extends StatelessWidget {
                       child: Container(
                         height: 90,
                         width: 120,
-                        color: Colors.blue[300],
+                        color:  AppColors.primaryColor1,
                         child: SizedBox(),
                       ),
                     ),

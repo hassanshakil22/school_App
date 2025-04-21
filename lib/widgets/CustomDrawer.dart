@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:school_app/app/appConstants.dart';
 import 'package:school_app/app/route_extensions.dart';
+import 'package:school_app/screens/CourseScreen.dart';
 import 'package:school_app/screens/homeScreen.dart';
 
 class MyCustomDrawer extends StatelessWidget {
@@ -32,7 +33,7 @@ class MyCustomDrawer extends StatelessWidget {
               children: [
                 // Section 1
                 _buildListTile('Accueil', Icons.home, () {context.push(Homescreen());}),
-                _buildListTile('Cours', Icons.book, () {}),
+                _buildListTile('Cours', Icons.book, () {context.push(Coursescreen());}),
                 _buildListTile('Cours Téléchargés', Icons.download, () {}),
                 _buildListTile('Bibliothèque', Icons.library_books, () {}),
               ],

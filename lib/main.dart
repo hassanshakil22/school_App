@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:school_app/screens/CourseScreen.dart';
 import 'package:school_app/screens/homeScreen.dart';
 import 'package:school_app/screens/lessonScreen.dart';
+import 'package:school_app/screens/loginScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,5 +19,5 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const Coursescreen() );
+      home: const Loginscreen() );
   }}
