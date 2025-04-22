@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:school_app/screens/CourseScreen.dart';
-import 'package:school_app/screens/homeScreen.dart';
-import 'package:school_app/screens/lessonScreen.dart';
+import 'package:school_app/providers/auth_provider.dart';
 import 'package:school_app/screens/loginScreen.dart';
+import 'package:school_app/services/dependency_injection.dart';
+import 'package:provider/provider.dart';
 
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
+
   runApp(const MyApp());
 }
 
@@ -14,10 +17,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => sl<AuthProvider>())],
+      child: Builder(
+        builder: (context) {
+          return MaterialApp(
+            title: 'Flutter Demo',
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            ),
+            home: const Loginscreen(),
+          );
+        },
       ),
-      home: const Loginscreen() );
-  }}
+    );
+  }
+}

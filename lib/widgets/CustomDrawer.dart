@@ -32,7 +32,7 @@ class MyCustomDrawer extends StatelessWidget {
               padding: EdgeInsets.zero,
               children: [
                 // Section 1
-                _buildListTile('Accueil', Icons.home, () {context.push(Homescreen());}),
+                _buildListTile('Accueil', Icons.home, () {context.pushReplacement(Homescreen());}),
                 _buildListTile('Cours', Icons.book, () {context.push(Coursescreen());}),
                 _buildListTile('Cours Téléchargés', Icons.download, () {}),
                 _buildListTile('Bibliothèque', Icons.library_books, () {}),

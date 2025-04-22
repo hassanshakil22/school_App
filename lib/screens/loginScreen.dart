@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:school_app/app/route_extensions.dart';
 import 'package:school_app/app/size_extensions.dart';
+import 'package:school_app/screens/homeScreen.dart';
 import 'package:school_app/theme/app_colours.dart';
+import 'package:school_app/widgets/customButton.dart';
 import 'package:school_app/widgets/text_field.dart';
 
 class Loginscreen extends StatefulWidget {
@@ -67,6 +70,8 @@ class _LoginscreenState extends State<Loginscreen> {
                 isObscureText: false,
                 hint: "Enter your password",
               ),
+              SizedBox(height: context.h * 0.1,),
+              Custombutton2(width: context.w * 0.5, height: context.h * 0.05, text: "Login",ontap: (){ context.pushReplacement(Homescreen());},)
             ],
           ),
         ),
