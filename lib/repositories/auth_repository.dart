@@ -5,4 +5,9 @@ class AuthRepository {
   AuthRepository({required this.httpService});
 
   final HttpService httpService;
+
+  
 }
+
+
+

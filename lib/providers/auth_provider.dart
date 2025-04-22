@@ -6,7 +6,26 @@ class AuthProvider extends ChangeNotifier{
 
   final AuthRepository authRepository;
   static String token = '';
+
   
+  Loading loading = Loading();
+  bool? isLoggedIn = false ;
+
+  void setLoading(bool isLoading) {
+    loading.setLoading(isLoading);
+    notifyListeners();
+  }
 
 
+
+
+
+}
+
+
+class Loading {
+  bool isLoading = false;
+  void setLoading(bool isloading) {
+    isLoading = isloading;
+  }
 }
