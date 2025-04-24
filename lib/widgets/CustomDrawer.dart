@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:school_app/app/appConstants.dart';
 import 'package:school_app/app/route_extensions.dart';
 import 'package:school_app/screens/CourseScreen.dart';
+import 'package:school_app/screens/downloadScreen.dart';
 import 'package:school_app/screens/homeScreen.dart';
 import 'package:school_app/screens/lessonScreen.dart';
 
@@ -32,15 +33,21 @@ class MyCustomDrawer extends StatelessWidget {
               children: [
                 // Section 1
                 _buildListTile('Accueil', Icons.home, () {
+                  context.pop();
                   context.pushReplacement(Homescreen());
                 }),
                 _buildListTile('Cours', Icons.book, () {
+                  context.pop();
                   context.push(Coursescreen());
                 }),
                 _buildListTile('Cours Téléchargés', Icons.download, () {
+                  context.pop();
                   context.push(LessonScreen());
                 }),
-                _buildListTile('Bibliothèque', Icons.library_books, () {}),
+                _buildListTile('Bibliothèque', Icons.library_books, () {
+                  context.pop();
+                  context.push(DownloadScreen());
+                }),
               ],
             ),
           ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:school_app/app/appConstants.dart';
 import 'package:school_app/app/size_extensions.dart';
-import 'package:school_app/theme/app_colours.dart';
+import 'package:school_app/app/theme/app_colours.dart';
 import 'package:school_app/widgets/CustomDrawer.dart';
 import 'package:school_app/widgets/customButton.dart';
 

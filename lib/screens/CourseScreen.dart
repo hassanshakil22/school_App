@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:school_app/app/appConstants.dart';
+import 'package:school_app/app/route_extensions.dart';
 import 'package:school_app/app/size_extensions.dart';
+import 'package:school_app/screens/lessonScreen.dart';
 import 'package:school_app/widgets/CustomDrawer.dart';
 
 class Coursescreen extends StatelessWidget {
@@ -33,7 +35,7 @@ class Coursescreen extends StatelessWidget {
                   childAspectRatio: 0.75, // Width / Height ratio
                 ),
                 itemBuilder: (context, index) {
-                  return CourseContainers(onTap: () {});
+                  return CourseContainers(onTap: () {context.push(LessonScreen());});
                 },
               ),
             ),

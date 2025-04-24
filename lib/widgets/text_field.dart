@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:school_app/app/size_extensions.dart';
-import 'package:school_app/theme/app_colours.dart';
+import 'package:school_app/app/theme/app_colours.dart';
 
 class CustomTextField extends StatefulWidget {
   TextEditingController textController;

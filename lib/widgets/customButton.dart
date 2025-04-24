@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:school_app/theme/app_colours.dart';
+import 'package:school_app/app/theme/app_colours.dart';
 
 class Custombutton extends StatefulWidget {
   final double width;
@@ -33,8 +33,8 @@ class Custombutton2 extends StatefulWidget {
   final double height;
   final String text;
   final VoidCallback ontap;
-
-  const Custombutton2({super.key, required this.width, required this.height, required this.text, required this.ontap});
+  final bool isloading;
+  const Custombutton2({super.key, required this.width, required this.height, required this.text, required this.ontap, required this.isloading});
 
   @override
   State<Custombutton2> createState() => _Custombutton2State();
@@ -49,8 +49,11 @@ class _Custombutton2State extends State<Custombutton2> {
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: AppColors.primaryColor2),
         width: widget.width,
         height:  widget.height,
+
         child: Center(
-          child: Text(widget.text, style: TextStyle(color: AppColors.textBlackColor)),
+          child: widget.isloading ? CircularProgressIndicator(): 
+          
+          Text(widget.text, style: TextStyle(color: AppColors.textBlackColor)),
         ),
       ),
     );

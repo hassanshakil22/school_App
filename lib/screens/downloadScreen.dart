@@ -4,14 +4,14 @@ import 'package:school_app/app/size_extensions.dart';
 import 'package:school_app/services/audioPlayerServices.dart';
 import 'package:school_app/widgets/CustomDrawer.dart';
 
-class LessonScreen extends StatefulWidget {
-  const LessonScreen({super.key});
+class DownloadScreen extends StatefulWidget {
+  const DownloadScreen({super.key});
 
   @override
-  State<LessonScreen> createState() => _LessonScreenState();
+  State<DownloadScreen> createState() => _DownloadScreenState();
 }
 
-class _LessonScreenState extends State<LessonScreen> {
+class _DownloadScreenState extends State<DownloadScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +23,8 @@ class _LessonScreenState extends State<LessonScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(child: Text("Lesson SCreen",style: TextStyle(fontSize: 30),)),
+              Center(child: Text("Download SCreen",style: TextStyle(fontSize: 30),)),
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: Headers(leading: "Introduction"),
@@ -130,29 +131,27 @@ class _CustomListTilesState extends State<CustomListTiles> {
       },
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Row(
-              children: [
-                Icon(Icons.play_circle_fill_sharp, color: Colors.red),
-                SizedBox(width: 5),
-                Text(
-                  "${widget.index.toString()}. ",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  widget.name,
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-                ),
-                Spacer(),
-                Text(
-                  widget.duration.toString(),
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                ),
-                SizedBox(width: 5),
-
-              ],
-            ),
+          Row(
+            children: [
+              SizedBox(width: 5),
+              Text(
+                "${widget.index.toString()}. ",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                widget.name,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              ),
+              Spacer(),
+              Text(
+                widget.duration.toString(),
+                style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.download_sharp, size: 25),
+              ),
+            ],
           ),
           Divider(color: Colors.black, thickness: 0.5, height: 10),
         ],

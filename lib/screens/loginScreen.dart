@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:school_app/app/route_extensions.dart';
 import 'package:school_app/app/size_extensions.dart';
+import 'package:school_app/providers/auth_provider.dart';
 import 'package:school_app/screens/homeScreen.dart';
-import 'package:school_app/theme/app_colours.dart';
+import 'package:school_app/app/theme/app_colours.dart';
 import 'package:school_app/widgets/customButton.dart';
 import 'package:school_app/widgets/text_field.dart';
 
@@ -22,6 +24,7 @@ FocusNode passFocus = FocusNode();
 class _LoginscreenState extends State<Loginscreen> {
   @override
   Widget build(BuildContext context) {
+    final  authProvider = context.watch<AuthProvider>(); 
     return Scaffold(
       backgroundColor: AppColors.ScaffoldbackgroundColor,
       body: SafeArea(
@@ -69,9 +72,16 @@ class _LoginscreenState extends State<Loginscreen> {
                 focus: passFocus,
                 isObscureText: false,
                 hint: "Enter your password",
+                
               ),
               SizedBox(height: context.h * 0.1,),
-              Custombutton2(width: context.w * 0.5, height: context.h * 0.05, text: "Login",ontap: (){ context.pushReplacement(Homescreen());},)
+              Custombutton2(
+                isloading: authProvider.loading.isLoading,
+                width: context.w * 0.5, height: context.h * 0.05, text: "Login",ontap: (){
+                authProvider.userLogin(context, emailController.text.trim() , passController.text.trim());
+
+                
+                context.pushReplacement(Homescreen());},)
             ],
           ),
         ),

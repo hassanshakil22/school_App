@@ -19,13 +19,12 @@ class _AuthStateBuilderState extends State<AuthStateBuilder> {
   }
 
   void init() async {
-    // context.read<AuthProvider>().getSessionInfo();
+    context.read<AuthProvider>().getSessionInfo();
   }
 
   @override
   Widget build(BuildContext context) {
     return context.watch<AuthProvider>().isLoggedIn == true
-        // ? context.watch<OnboardingProvider>().isOnboarded == true
         ? Homescreen()
         // :  SetLocationScreen()
         : const Loginscreen();
