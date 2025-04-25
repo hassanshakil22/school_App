@@ -22,7 +22,7 @@ class HttpService {
     print('[API LOG]: $message');
   }
 
-  Future<dynamic> get(String path, {String tokenArg = ""}) async {
+  Future<dynamic> get(String path) async {
     try {
       // In your HttpService:
       await NetworkUtils.ensureNetworkReady(baseUrl);
@@ -39,8 +39,11 @@ class HttpService {
 
       _log("Response Status: ${response.statusCode}");
       _log("Response Body: ${response.body}");
-      _handleErrors(json.decode(response.body));
-
+      if (response.statusCode != HttpCodes.Accepted &&
+          response.statusCode != HttpCodes.Created &&
+          response.statusCode != HttpCodes.OK) {
+        _handleErrors(json.decode(response.body));
+      }
       return json.decode(response.body);
     } on SocketException {
       throw const SocketException("No internet connection");
@@ -71,9 +74,11 @@ class HttpService {
 
       _log("Response Status: ${response.statusCode}");
       _log("Response Body: ${response.body}");
-
-      _handleErrors(json.decode(response.body));
-
+      if (response.statusCode != HttpCodes.Accepted &&
+          response.statusCode != HttpCodes.Created &&
+          response.statusCode != HttpCodes.OK) {
+        _handleErrors(json.decode(response.body));
+      }
       return json.decode(response.body);
     } on SocketException {
       throw const SocketException("No internet connection");
@@ -113,41 +118,40 @@ class HttpService {
   //     throw TimeoutException('API not responded in time');
   //   }
   // }
-void _handleErrors(Map<String, dynamic> response) {
-  // Handle validation errors (like 400 with "errors" key)
-  if (response.containsKey("errors")) {
-    final Map<String, dynamic> errorMap = response["errors"];
-    final List<String> errorMessages = [];
+  void _handleErrors(Map<String, dynamic> response) {
+    if (response.containsKey("errors")) {
+      final Map<String, dynamic> errorMap = response["errors"];
+      final List<String> errorMessages = [];
 
-    errorMap.forEach((key, value) {
-      if (value is List) {
-        errorMessages.addAll(value.map((e) => "$key: $e"));
-      } else {
-        errorMessages.add("$value");
-      }
-    });
+      errorMap.forEach((key, value) {
+        if (value is List) {
+          errorMessages.addAll(value.map((e) => "$key: $e"));
+        } else {
+          errorMessages.add("$value");
+        }
+      });
 
-    throw BadRequestException(errorMessages.join("\n"));
+      throw BadRequestException(errorMessages.join("\n"));
+    }
+
+    final statusCode = response["status"] ?? 0;
+    final title = response["title"] ?? "An unexpected error occurred.";
+
+    switch (statusCode) {
+      case HttpCodes.BadRequest:
+        throw BadRequestException(title);
+      case HttpCodes.Unauthorized:
+      case HttpCodes.Forbidden:
+        throw UnauthorizedException(title);
+      case HttpCodes.NotFound:
+        throw NotFoundException(title);
+      case HttpCodes.InternalServerError:
+        throw InternalServerErrorException(title);
+      case HttpCodes.ServiceUnavailable:
+      case HttpCodes.GatewayTimeout:
+        throw ServiceUnavailableException(title);
+      default:
+        throw UnknownException(title);
+    }
   }
-
-  final statusCode = response["status"] ?? 0;
-  final title = response["title"] ?? "An unexpected error occurred.";
-
-  switch (statusCode) {
-    case HttpCodes.BadRequest:
-      throw BadRequestException(title);
-    case HttpCodes.Unauthorized:
-    case HttpCodes.Forbidden:
-      throw UnauthorizedException(title);
-    case HttpCodes.NotFound:
-      throw NotFoundException(title);
-    case HttpCodes.InternalServerError:
-      throw InternalServerErrorException(title);
-    case HttpCodes.ServiceUnavailable:
-    case HttpCodes.GatewayTimeout:
-      throw ServiceUnavailableException(title);
-    default:
-      throw UnknownException(title);
-  }
-}
 }

@@ -64,10 +64,10 @@ void getAllSubjects() {
   List<AudioFile> filterAudioBySubject(String subject,) {
   return audioFiles.where((file) => file.category == subject).toList();
 }
-List<VideoFile> filterVideoBySubject(String subject, List<VideoFile> videoFiles) {
+List<VideoFile> filterVideoBySubject(String subject) {
   return videoFiles.where((file) => file.category == subject).toList();
 }
-List<PdfFile> filterPdfBySubject(String subject, List<PdfFile> pdfFiles) {
+List<PdfFile> filterPdfBySubject(String subject) {
   return pdfFiles.where((file) => file.category == subject).toList();
 }
 

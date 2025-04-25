@@ -18,7 +18,7 @@ class _AuthStateBuilderState extends State<AuthStateBuilder> {
     super.initState();
   }
 
-  void init() async {
+  void init()  {
     context.read<AuthProvider>().getSessionInfo();
   }
 

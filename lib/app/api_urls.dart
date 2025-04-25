@@ -9,7 +9,7 @@ static const studentLogin = "/SwaggerControllerApi/student-login";
 
 
 //get
-static getContent(String token) => "/SwaggerControllerApi/content-visualization?encodedToken=${token}";
+static getContent(String token) => "/SwaggerControllerApi/content-visualization?encodedToken=$token";
 
 static  downloadFile(String fileId , String fileType) => "/SwaggerControllerApi/download?fileId=$fileId&fileType=$fileType";
 

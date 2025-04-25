@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:school_app/app/appConstants.dart';
 import 'package:school_app/app/size_extensions.dart';
+import 'package:school_app/models/content_response.dart';
 import 'package:school_app/services/audioPlayerServices.dart';
 import 'package:school_app/widgets/CustomDrawer.dart';
 
-class LessonScreen extends StatefulWidget {
-  const LessonScreen({super.key});
+class DownloadedAssets extends StatefulWidget {
+  const DownloadedAssets({super.key});
 
   @override
-  State<LessonScreen> createState() => _LessonScreenState();
+  State<DownloadedAssets> createState() => _DownloadedAssetsState();
 }
 
-class _LessonScreenState extends State<LessonScreen> {
+class _DownloadedAssetsState extends State<DownloadedAssets> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +24,7 @@ class _LessonScreenState extends State<LessonScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(child: Text("Lesson Screen",style: TextStyle(fontSize: 30),)),
+              Center(child: Text("Subject Downloads",style: TextStyle(fontSize: 30),)),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: Headers(leading: "Introduction"),

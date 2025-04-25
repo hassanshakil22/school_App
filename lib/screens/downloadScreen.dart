@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:school_app/app/appConstants.dart';
 import 'package:school_app/app/size_extensions.dart';
+import 'package:school_app/models/content_response.dart';
 import 'package:school_app/services/audioPlayerServices.dart';
 import 'package:school_app/widgets/CustomDrawer.dart';
 
 class DownloadScreen extends StatefulWidget {
-  const DownloadScreen({super.key});
+    final String subject;
+  final List<AudioFile> audios;
+  final List<PdfFile> pdfs;
+  final List<VideoFile> videos;
+
+  const DownloadScreen({super.key, required this.subject, required this.audios, required this.pdfs, required this.videos});
 
   @override
   State<DownloadScreen> createState() => _DownloadScreenState();
@@ -23,7 +29,7 @@ class _DownloadScreenState extends State<DownloadScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(child: Text("Download SCreen",style: TextStyle(fontSize: 30),)),
+              Center(child: Text("Download Screen",style: TextStyle(fontSize: 30),)),
 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),

@@ -9,7 +9,7 @@ class AuthProvider extends ChangeNotifier {
   AuthProvider({required this.authRepository});
 
   final AuthRepository authRepository;
-   
+   static String token = '';
 
   Loading loading = Loading();
   bool? isLoggedIn = false;
@@ -22,8 +22,8 @@ class AuthProvider extends ChangeNotifier {
   void getSessionInfo() async {
     isLoggedIn = await UserPrefs.isSessionValid();
     print(isLoggedIn);
-    Appconsts.token = await UserPrefs.getToken();
-    print( "token : ${Appconsts.token}");
+    token = await UserPrefs.getToken();
+    print( "token : ${token}");
     notifyListeners();
   }
 
@@ -52,7 +52,7 @@ class AuthProvider extends ChangeNotifier {
   await UserPrefs.delToken();
   isLoggedIn = false;
   print(isLoggedIn);
-  Appconsts.token = '';
+   token = '';
   notifyListeners();
 }
 }
