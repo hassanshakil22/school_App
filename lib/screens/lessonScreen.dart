@@ -23,7 +23,7 @@ class _LessonScreenState extends State<LessonScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(child: Text("Lesson SCreen",style: TextStyle(fontSize: 30),)),
+              Center(child: Text("Lesson Screen",style: TextStyle(fontSize: 30),)),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: Headers(leading: "Introduction"),

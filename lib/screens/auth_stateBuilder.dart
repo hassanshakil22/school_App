@@ -26,7 +26,6 @@ class _AuthStateBuilderState extends State<AuthStateBuilder> {
   Widget build(BuildContext context) {
     return context.watch<AuthProvider>().isLoggedIn == true
         ? Homescreen()
-        // :  SetLocationScreen()
         : const Loginscreen();
   }
 }

@@ -24,7 +24,7 @@ FocusNode passFocus = FocusNode();
 class _LoginscreenState extends State<Loginscreen> {
   @override
   Widget build(BuildContext context) {
-    final  authProvider = context.watch<AuthProvider>(); 
+    final authProvider = context.watch<AuthProvider>();
     return Scaffold(
       backgroundColor: AppColors.ScaffoldbackgroundColor,
       body: SafeArea(
@@ -57,7 +57,10 @@ class _LoginscreenState extends State<Loginscreen> {
                 ),
               ),
               SizedBox(height: context.h * 0.08),
-              Text("Login To your account",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+              Text(
+                "Login To your account",
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
               SizedBox(height: context.h * 0.02),
 
               CustomTextField(
@@ -72,16 +75,21 @@ class _LoginscreenState extends State<Loginscreen> {
                 focus: passFocus,
                 isObscureText: false,
                 hint: "Enter your password",
-                
               ),
-              SizedBox(height: context.h * 0.1,),
+              SizedBox(height: context.h * 0.1),
               Custombutton2(
                 isloading: authProvider.loading.isLoading,
-                width: context.w * 0.5, height: context.h * 0.05, text: "Login",ontap: (){
-                authProvider.userLogin(context, emailController.text.trim() , passController.text.trim());
-
-                
-                context.pushReplacement(Homescreen());},)
+                width: context.w * 0.5,
+                height: context.h * 0.05,
+                text: "Login",
+                ontap: () {
+                  authProvider.userLogin(
+                    context,
+                    emailController.text.trim(),
+                    passController.text.trim(),
+                  );
+                },
+              ),
             ],
           ),
         ),

@@ -10,14 +10,14 @@ class AuthResponse {
   factory AuthResponse.fromJson(Map<String, dynamic> json) {
     return AuthResponse(
       token: json['token'] ?? '',
-      sessionExpiry: DateTime.parse(json['sessionDuration']),
+      sessionExpiry: DateTime.parse(json['sessionExpiresAt']),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'token': token,
-      'sessionDuration': sessionExpiry.toIso8601String(),
+      'sessionExpiresAt': sessionExpiry.toIso8601String(),
     };
   }
 }

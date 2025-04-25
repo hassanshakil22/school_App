@@ -9,7 +9,6 @@ class AuthRepository {
   AuthRepository({required this.httpService});
 
   final HttpService httpService;
-
    FutureEither1<AuthResponse>  userLogin(
       {required String email, required String password}) async {
     try {

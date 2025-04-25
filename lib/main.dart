@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:school_app/providers/auth_provider.dart';
 import 'package:school_app/providers/home_provider.dart';
+import 'package:school_app/screens/auth_stateBuilder.dart';
 import 'package:school_app/screens/loginScreen.dart';
 import 'package:school_app/services/dependency_injection.dart';
 import 'package:provider/provider.dart';
+import 'package:school_app/services/shared_preferences.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
-
+  await UserPrefs.init();
   runApp(const MyApp());
 }
 
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             ),
-            home: const Loginscreen(),
+            home: const AuthStateBuilder(),
           );
         },
       ),

@@ -30,5 +30,47 @@ class HomeProvider extends ChangeNotifier {
     pdfFiles = response.pdfFiles;
     notifyListeners();
   }
-  
+
+
+//extracting subjects 
+List<String> subjects = [];
+void getAllSubjects() {
+  final Set<String> subjectSet = {};
+
+  for (var file in audioFiles) {
+    if (file.category != null && file.category.trim().isNotEmpty) {
+      subjectSet.add(file.category.trim());
+    }
+  }
+
+  for (var file in videoFiles) {
+    if (file.category != null && file.category.trim().isNotEmpty) {
+      subjectSet.add(file.category.trim());
+    }
+  }
+
+  for (var file in pdfFiles) {
+    if (file.category != null && file.category.trim().isNotEmpty) {
+      subjectSet.add(file.category.trim());
+    }
+  }
+
+  subjects = subjectSet.toList();
+}
+
+
+//filtering according to subject
+
+  List<AudioFile> filterAudioBySubject(String subject,) {
+  return audioFiles.where((file) => file.category == subject).toList();
+}
+List<VideoFile> filterVideoBySubject(String subject, List<VideoFile> videoFiles) {
+  return videoFiles.where((file) => file.category == subject).toList();
+}
+List<PdfFile> filterPdfBySubject(String subject, List<PdfFile> pdfFiles) {
+  return pdfFiles.where((file) => file.category == subject).toList();
+}
+
+
+
 }

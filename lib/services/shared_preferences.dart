@@ -16,6 +16,7 @@ class UserPrefs {
 }
 static Future<bool> isSessionValid() async {
   final token = await getToken();
+  print("got token --> $token");
   if (token.isEmpty) return false;
   
   final expiryString = _pref?.getString(PrefKeys.userSessionKey);
@@ -31,6 +32,7 @@ static Future<bool> isSessionValid() async {
 
   static Future setToken(String value) async {
     try {
+      print("setting token $value");
       await _pref
           ?.setString(PrefKeys.token, value)
           .catchError((error) => throw error);
@@ -41,10 +43,11 @@ static Future<bool> isSessionValid() async {
 
   static Future<String> getToken() async {
     String? value = _pref?.getString(PrefKeys.token);
-    return value ?? "";
+    return value ?? '';
   }
 
   static Future<void> delToken() async {
+    print("token deleted ");
     await _pref?.remove(PrefKeys.token);
   }
 
